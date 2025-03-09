@@ -1,0 +1,13 @@
+docker exec -it infra-kafka-0-1 /opt/bitnami/kafka/bin/kafka-topics.sh --create --topic messages --bootstrap-server localhost:9092 --partitions 3 --replication-factor 2
+
+docker exec -it infra-kafka-0-1 /opt/bitnami/kafka/bin/kafka-topics.sh --create --topic filtered-messages --bootstrap-server localhost:9092 --partitions 3 --replication-factor 2
+
+docker exec -it infra-kafka-0-1 /opt/bitnami/kafka/bin/kafka-topics.sh --create --topic message-filter-table --bootstrap-server localhost:9092 --partitions 3 --replication-factor 2 --config cleanup.policy=compact
+
+docker exec -it infra-kafka-0-1 /opt/bitnami/kafka/bin/kafka-topics.sh --create --topic users-to-block --bootstrap-server localhost:9092 --partitions 3 --replication-factor 2
+
+docker exec -it infra-kafka-0-1 /opt/bitnami/kafka/bin/kafka-topics.sh --create --topic blocked-users-table --bootstrap-server localhost:9092 --partitions 3 --replication-factor 2 --config cleanup.policy=compact
+
+docker exec -it infra-kafka-0-1 /opt/bitnami/kafka/bin/kafka-topics.sh --create --topic words-to-mask --bootstrap-server localhost:9092 --partitions 3 --replication-factor 2
+
+docker exec -it infra-kafka-0-1 /opt/bitnami/kafka/bin/kafka-topics.sh --create --topic masking-words-table --bootstrap-server localhost:9092 --partitions 3 --replication-factor 2 --config cleanup.policy=compact
